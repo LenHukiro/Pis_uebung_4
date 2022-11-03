@@ -8,7 +8,7 @@ interface PokemonType {
 
 interface FlyingType extends PokemonType {
     default boolean isWeakAgainst(Pokemon other) {
-        return other instanceof GrassType|| other instanceof ElectricType;
+        return other instanceof GrassType;
     }
 
     default boolean isStrongAgainst(Pokemon other) {
@@ -45,15 +45,23 @@ interface GrassType extends PokemonType {
         return other instanceof WaterType;
     }
 }
+interface ElectricType extends PokemonType {
+    default boolean isWeakAgainst(Pokemon other) {
+        return other instanceof GrassType;
+    }
 
-interface ElectricType extends PokemonType{
-    default boolean isWeakAgainst(Pokemon other){return other instanceof GrassType;}
-
-    default boolean isStrongAgainst(Pokemon other){return other instanceof FlyingType|| other instanceof WaterType;}
+    default boolean isStrongAgainst(Pokemon other) {
+        return other instanceof WaterType|| other instanceof FlyingType;
+    }
 }
 
-interface IceType extends PokemonType{
-    default boolean isWeakAgainst(Pokemon other){return other instanceof WaterType;}
+interface IceType extends PokemonType {
+    default boolean isWeakAgainst(Pokemon other) {
+        return other instanceof WaterType;
+    }
 
-    default boolean isStrongAgainst(Pokemon other){return other instanceof FlyingType|| other instanceof GrassType;}
+    default boolean isStrongAgainst(Pokemon other) {
+        return other instanceof FlyingType|| other instanceof GrassType;
+    }
 }
+
