@@ -47,7 +47,7 @@ interface GrassType extends PokemonType {
 }
 interface ElectricType extends PokemonType {
     default boolean isWeakAgainst(Pokemon other) {
-        return other instanceof GrassType;
+        return other instanceof GrassType || other instanceof ElectricType;
     }
 
     default boolean isStrongAgainst(Pokemon other) {

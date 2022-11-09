@@ -7,11 +7,11 @@ public class Zapdos extends Pokemon implements ElectricType,FlyingType{
 
     @Override
     public boolean isWeakAgainst(Pokemon other) {
-        return ElectricType.super.isWeakAgainst(other);
+        return ElectricType.super.isStrongAgainst(other) || FlyingType.super.isStrongAgainst(other);
     }
 
     @Override
     public boolean isStrongAgainst(Pokemon other) {
-        return ElectricType.super.isStrongAgainst(other);
+        return ElectricType.super.isStrongAgainst(other) || FlyingType.super.isStrongAgainst(other);
     }
 }
