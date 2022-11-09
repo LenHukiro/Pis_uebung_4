@@ -1,19 +1,32 @@
 
 import ninja.Ninja;
-import pokemon.Bisasam;
-import pokemon.Glurak;
-import pokemon.Habitak;
-import pokemon.Karpador;
-import pokemon.Pokemon;
-import pokemon.Schiggy;
-import pokemon.Taubsi;
+import pokemon.*;
 import teams.Team;
+
+import java.util.Arrays;
 
 public abstract class Main {
     public static void main(String[] args) {
-        typedPokemonFight();
-        teamFightPokemon();
-        teamFightNinja();
+        //typedPokemonFight();
+        //teamFightPokemon();
+        //teamFightNinja();
+
+        Pokedex<Pokemon> ashDex = new Pokedex<>();
+        Pokedex<Pokemon> garysDex = new Pokedex<>();
+        ashDex.add(new Pikachu(22,10));
+        ashDex.add(new Schiggy(14,9));
+        ashDex.add(new Glurak(40,35));
+
+        garysDex.add(new Karpador(8,5));
+        garysDex.add(new Taubsi(15,11));
+        garysDex.add(new Bisasam(15,8));
+
+        ashDex.swap("Schiggy",garysDex,"Bisasam");
+        System.out.println("Ash's Pokedex: "+ashDex);
+        System.out.println("Gary's Pokedex: "+ garysDex);
+        System.out.println(ashDex.getUniqueObjectsOf(garysDex).toString());
+
+
     }
 
     static void typedPokemonFight() {
