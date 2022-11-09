@@ -7,10 +7,8 @@ public class Lavados extends Pokemon implements FireType,FlyingType{
 
     @Override
     public boolean isWeakAgainst(Pokemon other) {
-        // Only weakness of FireType, because the FlyingType weakness (grass) is cancelled out by Fire-Type.
-        return FireType.super.isWeakAgainst(other);
-        // Or:
-        // return other instanceof WaterType;
+        return FireType.super.isWeakAgainst(other)|| FlyingType.super.isWeakAgainst(other);
+
     }
 
     @Override
