@@ -4,6 +4,7 @@ interface PokemonType {
     boolean isWeakAgainst(Pokemon other);
 
     boolean isStrongAgainst(Pokemon other);
+
 }
 
 interface FlyingType extends PokemonType {

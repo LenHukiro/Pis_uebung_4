@@ -2,7 +2,9 @@ package pokemon;
 
 import teams.Fightable;
 
-public abstract class Pokemon implements PokemonType, Fightable<Pokemon> {
+import javax.naming.Name;
+
+public abstract class Pokemon implements PokemonType, Fightable<Pokemon>, Nameable {
     private String name;
     private int hp;
     private int attack;
