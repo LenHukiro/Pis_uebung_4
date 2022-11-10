@@ -19,9 +19,9 @@ public abstract class Main {
 
         garysDex.add(new Karpador(8,5));
         garysDex.add(new Taubsi(15,11));
-        garysDex.add(new Bisasam(15,8));
+        garysDex.add(new Pikachu(22,10));
 
-        ashDex.swap("Schiggy",garysDex,"Bisasam");
+        ashDex.swap("Pikachu",garysDex,"Karpador");
         System.out.println("Ash's Pokedex: "+ashDex);
         System.out.println("Gary's Pokedex: "+ garysDex);
         System.out.println(ashDex.getUniqueObjectsOf(garysDex).toString());

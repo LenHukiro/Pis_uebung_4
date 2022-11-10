@@ -1,41 +1,45 @@
 package pokemon;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Pokedex<T extends Nameable> {
 
-    public Map<String,T> map;
+    public Map<String, T> pokedex;
 
-    public Pokedex(){
-        map = new HashMap<String,T>();
+    public Pokedex() {
+        pokedex = new HashMap<>();
     }
 
-    public void add(T nameable){
-        map.put(nameable.getName(),nameable);
+    public void add(T nameable) {
+        if (nameable != null)
+            pokedex.put(nameable.getName(), nameable);
     }
 
-    public void swap(String name, Pokedex<T> other, String otherName){
-        T pokemon = map.get(name);
-        T otherPokemon = other.map.get(otherName);
+    public void swap(String name, Pokedex<T> other, String otherName) {
+        T pokemon = pokedex.get(name);
+        T otherPokemon = other.pokedex.get(otherName);
 
-        map.remove(name);
-        other.map.remove(otherName);
+        if (pokemon == null || otherPokemon == null) return;
+
+        pokedex.remove(name);
+        other.pokedex.remove(otherName);
 
         add(otherPokemon);
         other.add(pokemon);
-
     }
 
-     public Set<T> getUniqueObjectsOf(Pokedex<T> other){
-        Set<T> notContainList = new HashSet<T>();
-        for (String pokemon : other.map.keySet()) {
-            if(map.get(pokemon) == null) notContainList.add(other.map.get(pokemon));
+    public Set<T> getUniqueObjectsOf(Pokedex<T> other) {
+        Set<T> set = new HashSet<>();
+        for (String pokemon : other.pokedex.keySet()) {
+            if (pokedex.get(pokemon) == null) set.add(other.pokedex.get(pokemon));
         }
-        return notContainList;
+        return set;
     }
 
     @Override
     public String toString() {
-        return "Pokedex" +  map.keySet();
+        return "Pokedex" + pokedex.keySet();
     }
 }
